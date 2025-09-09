@@ -134,3 +134,32 @@ class Cliente:
         except Exception as e:
             print(f"Ocorreu um erro Inesperado: {e}")
             os.system("pause")
+            
+# ------------------------------------------------------------------------------------------
+
+class Locadora:
+    #Construtor
+    
+    def __init__(self, clientes: list[Cliente], itens: list[Item]):
+        try:
+            self.__clientes = list[Cliente]
+            self.__itens = list[Item]
+        except Exception as e:
+            print(f"Ocorreu um erro Inesperado: {e}")
+            os.system("pause")
+    
+    #Métodos
+    
+    def cadastrarCliente(cliente: Cliente):
+        pass
+    
+    def cadastrarItem(item: Item):
+        pass
+    
+    def listarClientes():
+        pass
+    
+    def listarItens():
+        pass
+    
+    
