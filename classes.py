@@ -134,32 +134,36 @@ class Cliente:
         except Exception as e:
             print(f"Ocorreu um erro Inesperado: {e}")
             os.system("pause")
-            
+
+
 # ------------------------------------------------------------------------------------------
 
+
 class Locadora:
-    #Construtor
-    
-    def __init__(self, clientes: list[Cliente], itens: list[Item]):
-        try:
-            self.__clientes = list[Cliente]
-            self.__itens = list[Item]
-        except Exception as e:
-            print(f"Ocorreu um erro Inesperado: {e}")
-            os.system("pause")
-    
-    #Métodos
-    
-    def cadastrarCliente(cliente: Cliente):
-        pass
-    
-    def cadastrarItem(item: Item):
-        pass
-    
+    # Construtor
+
+    def __init__(self, clientes: None, itens=None):
+        self.__clientes = clientes if clientes is not None else []
+        self.__itens = itens if itens is not None else []
+
+    # Métodos
+
+    def cadastrarCliente(self, cliente: Cliente):
+        if cliente not in self.__clientes:
+            self.__clientes.append(cliente)
+            print(f"Cliente {cliente.getNome()} adicionado com sucesso.")
+        else:
+            print(f"Cliente {cliente.getNome()} já está cadastrado.")
+
+    def cadastrarItem(self, item: Item):
+        if item not in self.__itens:
+            self.__itens.append(item)
+            print(f"Item '{item.getTitulo()}' adicionado com sucesso.")
+        else:
+            print(f"Item '{item.getTitulo()}' já está cadastrado")
+
     def listarClientes():
         pass
-    
+
     def listarItens():
         pass
-    
-    
