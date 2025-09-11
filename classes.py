@@ -134,6 +134,12 @@ class Cliente:
         except Exception as e:
             print(f"Ocorreu um erro Inesperado: {e}")
             os.system("pause")
+    
+    def getNome(self):
+        return self.__nome
+
+    def getCpf(self):
+        return self.__cpf
 
 
 # ------------------------------------------------------------------------------------------
@@ -160,10 +166,22 @@ class Locadora:
             self.__itens.append(item)
             print(f"Item '{item.getTitulo()}' adicionado com sucesso.")
         else:
-            print(f"Item '{item.getTitulo()}' já está cadastrado")
+            print(f"Item '{item.getTitulo()}' já está cadastrado.")
 
-    def listarClientes():
-        pass
+    def listarClientes(self):
+        if self.__clientes:
+            print("Clientes Cadastrados:")
+            for item in self.__clientes:
+                print(f"| {Cliente.getNome()} -- {Cliente.getCpf()} ")
+        else:
+            print("Nenhum cliente cadastrado na locadora.")
 
-    def listarItens():
-        pass
+    def listarItens(self):
+        if self.__itens:
+            print("Itens Cadastrados:")
+            for item in self.__itens:
+                print(f"| {Item.getCodigo()} -- {Item.getTitulo()} ")
+        else:
+            print("Nenhum título cadastrado na locadora.")
+    
+    
