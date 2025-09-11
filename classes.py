@@ -110,7 +110,7 @@ class Cliente:
 class Locadora:
     # Construtor
 
-    def __init__(self, clientes: None, itens=None):
+    def __init__(self, clientes=None, itens=None):
         self.__clientes = clientes if clientes is not None else []
         self.__itens = itens if itens is not None else []
 

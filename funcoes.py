@@ -3,6 +3,8 @@ import os
 import time
 from cadastroteste import *
 
+locadora = Locadora()
+
 def limparTela():
     os.system('cls')
     
@@ -39,7 +41,23 @@ def main():
                 pass
             
             case "4":
-                pass
+                limparTela()
+                print(f"Você escolheu a opção: 4 - Cadastrar Cliente")
+                esperarTela()
+                print("Insira o nome do novo cliente:")
+                nome=input("--> ")
+                print("Insira o CPF do novo cliente")
+                try:
+                    cpf=input("--> ")
+                    int(cpf)
+                except ValueError:
+                    print("Valor inválido, insira apenas números")
+                novo_cliente = Cliente(nome=nome, cpf=cpf)
+                esperarTela()
+                locadora.cadastrarCliente(novo_cliente)
+                esperarTela()
+                pularLinha()
+                esperarTela()
             
             case "5":
                 pass
