@@ -89,9 +89,9 @@ class Cliente:
         else:
             print("Este item não está locado.")
 
-    def listarItens(self):
+    def listarLocados(self):
         if self.__itensLocados:
-            print(f"Itens locados por {self.__nome}:")
+            print(f"Itens locados por {self.__nome} - {self.__cpf}:")
             for item in self.__itensLocados:
                 print(f"- [{item.getCodigo()}] {item.getTitulo()}")
         else:
