@@ -1,4 +1,8 @@
 import os
+import time
+
+
+# ------------------------------------------------------------------------------------------
 
 
 class Item:
@@ -39,6 +43,9 @@ class Item:
     def getCodigo(self):
         return self.__codigo    
 
+    def descricao(self):
+        return f"[ITEM]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}"
+
 
 # ------------------------------------------------------------------------------------------
 
@@ -50,6 +57,16 @@ class Filme(Item):
         Item.__init__(self, codigo, titulo)
         self.__genero = genero
         self.__duracao = duracao
+        
+    def getGenero(self):
+        return self.__genero
+    
+    def getDuracao(self):
+        return self.__duracao
+        
+    def descricao(self):
+        return (f"[FILME]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nGênero: {self.getGenero()} | Duração: {self.getDuracao()}")
+
 
 # ------------------------------------------------------------------------------------------
 
@@ -61,6 +78,16 @@ class Jogo(Item):
         Item.__init__(self, codigo, titulo)
         self.__plataforma = plataforma
         self.__faixaEtaria = faixaEtaria
+        
+    def getPlataforma(self):
+        return self.__plataforma
+
+    def getFaixaEtaria(self):
+        return self.__faixaEtaria
+    
+    def descricao(self):
+        return (f"[JOGO]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nPlataforma: {self.getPlataforma()} | Faixa Etária: {self.getFaixaEtaria()}")
+
 
 # ------------------------------------------------------------------------------------------
 
@@ -133,17 +160,30 @@ class Locadora:
     def listarClientes(self):
         if self.__clientes:
             print("Clientes Cadastrados:")
+            print("Nome -- CPF") 
             for item in self.__clientes:
-                print(f"| {Cliente.getNome()} -- {Cliente.getCpf()} ")
+                print(f"| {item.getNome()} -- {item.getCpf()} ")
+                time.sleep(0.3)
         else:
+            time.sleep(1)
             print("Nenhum cliente cadastrado na locadora.")
+            os.system('pause')
+            
 
     def listarItens(self):
         if self.__itens:
             print("Itens Cadastrados:")
             for item in self.__itens:
-                print(f"| {Item.getCodigo()} -- {Item.getTitulo()} ")
+                print(f"{item.descricao()}")
+                time.sleep(0.2)
+                print('')
         else:
+            time.sleep(1)
             print("Nenhum título cadastrado na locadora.")
+            os.system('pause')
+        print('')
+        os.system('pause')
     
-    
+
+# ------------------------------------------------------------------------------------------
+
