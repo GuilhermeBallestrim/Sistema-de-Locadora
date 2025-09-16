@@ -31,13 +31,149 @@ def main():
         pularLinha()
         match ch:
             case "1":
-                pass
-            
+                limparTela()
+                print(f"Você escolheu a opção: 1 - Locar Item")
+                esperarTela()
+                pularLinha()
+                pausarTela()
+                pularLinha()
+                if locadora.getClientes():
+                    if locadora.getItens():
+                        limparTela()
+                        locadora.listarClientes()
+                        pularLinha()
+                        print("Digite o CPF do Cliente")
+                        esperarTela()
+                        pularLinha()
+                        try:
+                            cl=input("--> ")
+                            int(cl)
+                        except ValueError:
+                            pularLinha()
+                            esperarTela()
+                            print("Valor inválido, insira apenas números")
+                            pularLinha()
+                            pausarTela()
+                            continue                
+                        pularLinha()
+                        pausarTela()
+                        limparTela()
+                        locadora.listarItens()
+                        print("Digite o código do item a ser alugado")
+                        esperarTela()
+                        pularLinha()
+                        try:
+                            it=input("--> ")
+                            int(it)
+                        except ValueError:
+                            pularLinha()
+                            esperarTela()
+                            print("Valor inválido, insira apenas números")
+                            pularLinha()
+                            pausarTela()
+                            continue
+                        esperarTela()
+                        item_selecionado = 0
+                        cliente_selecionado = 0
+                        for clien in locadora.getClientes():
+                            if clien.getCpf() == cl:
+                                cliente_selecionado = clien
+                                break
+                        for item in locadora.getItens():
+                            if item.getCodigo() == it:
+                                item_selecionado = item
+                                break
+                        Cliente.locar(cliente_selecionado,item_selecionado)
+                        esperarTela()
+                        pausarTela()
+                    else:
+                        limparTela()
+                        print("Nenhum item cadastrado na locadora")
+                        esperarTela()
+                        pausarTela()
+                else:
+                    limparTela()
+                    print("Nenhum cliente cadastrado na locadora")
+                    esperarTela()
+                    pausarTela()
+                
             case "2":
-                pass
-            
+                limparTela()
+                print(f"Você escolheu a opção: 2 - Devolver Item")
+                esperarTela()
+                pularLinha()
+                pausarTela()
+                pularLinha()
+                if locadora.getClientes():
+                    if locadora.getItens():
+                        limparTela()
+                        locadora.listarClientes()
+                        pularLinha()
+                        print("Digite o CPF do Cliente")
+                        esperarTela()
+                        pularLinha()
+                        try:
+                            cl=input("--> ")
+                            int(cl)
+                        except ValueError:
+                            pularLinha()
+                            esperarTela()
+                            print("Valor inválido, insira apenas números")
+                            pularLinha()
+                            pausarTela()
+                            continue                
+                        pularLinha()
+                        pausarTela()
+                        limparTela()
+                        locadora.listarItens()
+                        print("Digite o código do item a ser alugado")
+                        esperarTela()
+                        pularLinha()
+                        try:
+                            it=input("--> ")
+                            int(it)
+                        except ValueError:
+                            pularLinha()
+                            esperarTela()
+                            print("Valor inválido, insira apenas números")
+                            pularLinha()
+                            pausarTela()
+                            continue
+                        esperarTela()
+                        item_selecionado = 0
+                        cliente_selecionado = 0
+                        for clien in locadora.getClientes():
+                            if clien.getCpf() == cl:
+                                cliente_selecionado = clien
+                                break
+                        for item in locadora.getItens():
+                            if item.getCodigo() == it:
+                                item_selecionado = item
+                                break
+                        Cliente.devolver(cliente_selecionado,item_selecionado)
+                        esperarTela()
+                        pausarTela()
+                    else:
+                        limparTela()
+                        print("Nenhum item cadastrado na locadora")
+                        esperarTela()
+                        pausarTela()
+                else:
+                    limparTela()
+                    print("Nenhum cliente cadastrado na locadora")
+                    esperarTela()
+                    pausarTela()
+                                
             case "3":
-                pass
+                print(f"Você escolheu a opção: 3 - Listar Itens Locados")
+                print("\nItens Indisponíveis")
+                for item in locadora.getItens():
+                    if item.getDisp() == False:
+                        print(f"{item.getTitulo()}")
+                print("\nItens Disponíveis")
+                for item in locadora.getItens():
+                    if item.getDisp() == True:
+                        print(f"{item.getTitulo()}")
             
             case "4":
                 limparTela()

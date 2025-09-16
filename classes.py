@@ -45,6 +45,15 @@ class Item:
 
     def descricao(self):
         return f"[ITEM]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}"
+    
+    def getStatus(self):
+        if self.__disponivel == True:
+            return ("Disponível para Aluguel")
+        else:
+            return ("Indisponível")
+    
+    def getDisp(self):
+        return self.__disponivel
 
 
 # ------------------------------------------------------------------------------------------
@@ -65,7 +74,7 @@ class Filme(Item):
         return self.__duracao
         
     def descricao(self):
-        return (f"[FILME]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nGênero: {self.getGenero()} | Duração: {self.getDuracao()}")
+        return (f"[FILME]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nGênero: {self.getGenero()} | Duração: {self.getDuracao()}\nDisponibilidade: {self.getStatus()}")
 
 
 # ------------------------------------------------------------------------------------------
@@ -86,7 +95,7 @@ class Jogo(Item):
         return self.__faixaEtaria
     
     def descricao(self):
-        return (f"[JOGO]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nPlataforma: {self.getPlataforma()} | Faixa Etária: {self.getFaixaEtaria()}")
+        return (f"[JOGO]\nCódigo: {self.getCodigo()} | Título: {self.getTitulo()}\nPlataforma: {self.getPlataforma()} | Faixa Etária: {self.getFaixaEtaria()}\nDisponibilidade: {self.getStatus()}")
 
 
 # ------------------------------------------------------------------------------------------
@@ -142,6 +151,12 @@ class Locadora:
         self.__itens = itens if itens is not None else []
 
     # Métodos
+    
+    def getClientes(self):
+        return self.__clientes
+    
+    def getItens(self):
+        return self.__itens
 
     def cadastrarCliente(self, cliente: Cliente):
         if cliente not in self.__clientes:
